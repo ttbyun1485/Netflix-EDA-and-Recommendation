@@ -1,41 +1,66 @@
-# Netflix-EDA-and-Recommendation
-This project conducts a comprehensive Exploratory Data Analysis (EDA) on a Netflix dataset, followed by the development of a basic content-based recommendation system. The goal is to uncover patterns in Netflix's content library — such as distribution by type (Movies vs. TV Shows), production countries, genre preferences across top-producing nations, and cultural specializations — and then use these insights to build a simple personalized recommendation engine.
+# Netflix EDA and Recommendation
 
-## Key Components & Analyses Performed
+## Overview
+This project performs Exploratory Data Analysis (EDA) on Netflix's movie and TV show dataset, uncovering trends in content distribution, genres, ratings, and more. It also builds a content-based recommendation system using TF-IDF vectorization and cosine similarity to suggest similar titles based on descriptions, directors, casts, and genres.
 
-1. **Data Preparation & Cleaning**  
-   - Handled multi-value fields (countries and genres) using exploding techniques to enable accurate per-country and per-genre counting.  
-   - Removed empty/invalid entries and standardized text formatting.
+Key goals:
+- Analyze Netflix content patterns (e.g., by country, year, type).
+- Develop and iterate on a recommendation engine for personalized suggestions.
 
-2. **Core EDA Insights**  
-   - **Content Type Distribution**: Netflix's catalog contains significantly more Movies (~6,200) than TV Shows (~2,700).  
-   - **Top Producing Countries**: The United States dominates with over 3,500 titles, followed by India, United Kingdom, Canada, France, and Japan.  
-   - **Top Genres**: International Movies, Dramas, and Comedies are the most prevalent categories overall.  
-   - **Country-Specific Genre Preferences** (visualized with exploded donut charts):  
-     - India shows strong focus on International Movies (31%) and Dramas (24%).  
-     - France emphasizes International Movies (23%) and Independent content.  
-     - Japan stands out with Anime Series (~20%) and International TV Shows.  
-     - The US, UK, and Canada exhibit more balanced distributions with large "Others" portions.  
-     - Dramas consistently appear among top genres in most major producing countries.
+This is my first EDA project, built with Python in a Jupyter Notebook. Feedback welcome!
 
-3. **Content-Based Recommendation System**  
-   - Combined textual features: description + weighted genres (to reduce noise from generic words).  
-   - Used TF-IDF vectorization to convert content into numerical vectors.  
-   - Computed pairwise cosine similarity between all items.  
-   - Built a function that, given any title (e.g. "Stranger Things" or "Emily in Paris"), returns the most similar titles based on thematic and genre overlap.  
-   - Results show meaningful matches (e.g. mystery/thriller series for Stranger Things, romantic comedies for Emily in Paris).
+## Dataset
+- Source: Netflix Titles Dataset(https://www.kaggle.com/datasets/shivamb/netflix-shows) (netflix_titles.csv, ~8,800 entries).
+- Features: Title, type (Movie/TV Show), director, cast, country, release year, rating, duration, listed genres, description.
 
-## Main Findings
-- Netflix pursues a dual strategy: broad, diversified production in English-speaking markets (US, UK, Canada) and targeted investment in culturally specific or internationally appealing content in non-English markets (India → International Movies & Dramas, Japan → Anime & International TV).  
-- Dramas and International-labeled content are among the most consistent and cross-culturally important genres.
+## Requirements
 
-## Technical Stack 
-- Python, Pandas (data manipulation & exploding), Matplotlib + Seaborn (visualizations), Scikit-learn (TF-IDF + cosine similarity)  
-- Jupyter Notebook workflow with clear markdown explanations and visual outputs
+Python 3.x
+Libraries: pandas, numpy, matplotlib, seaborn, wordcloud, scikit-learn (install via pip install -r requirements.txt)
 
-## Limitations & Future Directions 
-- Current recommendation is purely content-based (no user ratings or viewing history).  
-- Long descriptions can introduce noise → potential improvement with sentence embeddings (e.g. Sentence-BERT).  
-- Could be extended with collaborative filtering, temporal trends (content added over years), or user segmentation.
+## How to Run
 
-This project demonstrates end-to-end data analysis skills — from cleaning messy real-world data, through insightful visualization and interpretation, to implementing a functional recommendation algorithm — and provides actionable observations about Netflix's global content strategy.
+1. Clone the repo: git clone https://github.com/yourusername/netflix-eda-recommendation.git
+2. Install dependencies: pip install -r requirements.txt
+3. Open the Jupyter Notebook: jupyter notebook Netflix_EDA_and_Recommendation.ipynb
+4. Run all cells to perform EDA and test recommendations.
+
+## Project Structure
+
+- Data Loading & Cleaning: Load CSV, handle missing values (e.g., fill 'Unknown'), parse durations and genres.
+
+- EDA:
+  1. Distributions: Movie vs. TV Show (pie chart), top countries/producers (bar plots).
+  2. Trends: Release years, ratings, durations (histograms, box plots).
+  3. Genres: Top categories, word clouds for descriptions and genres.
+  4. Correlations: Heatmap for numeric features.
+
+## Recommendation System:
+Version 1: TF-IDF on combined features (description + director + cast + genres).
+Version 2: Separate matrices for genres and other text.
+Version 3: Weighted combination (60% genres, 40% others) for improved relevance.
+Example: Recommendations for "Stranger Things" and "Emily in Paris".
+
+## Insights:
+- US dominates content (~30%), followed by India/UK.
+- TV-MA/TV-14 are most common ratings.
+- Genres like Drama/Comedy prevail; recommendations align better with genre weighting.
+
+
+## Results
+
+- EDA reveals growth in Netflix originals post-2010, with movies outnumbering TV shows.
+- Recommender improves iteratively: Initial version had noise; final version prioritizes genre matches for thematic similarity (e.g., supernatural shows for "Stranger Things").
+
+## Limitations & Future Work
+
+- Relies on content similarity (no user ratings for collaborative filtering).
+- TF-IDF can miss semantic nuances; future: Use BERT embeddings.
+- Add interactivity (e.g., Streamlit dashboard).
+- Incorporate more data (e.g., IMDb ratings) or hybrid filtering.
+
+## Author
+
+ttbyun – Math student exploring data science.
+
+Feel free to discuss more with me! ><
