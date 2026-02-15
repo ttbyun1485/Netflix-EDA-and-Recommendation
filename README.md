@@ -36,9 +36,9 @@ Libraries: pandas, numpy, matplotlib, seaborn, wordcloud, scikit-learn (install 
   4. Correlations: Heatmap for numeric features.
 
 ## Recommendation System:
-Version 1: TF-IDF on combined features (description + director + cast + genres).
-Version 2: Separate matrices for genres and other text.
-Version 3: Weighted combination (60% genres, 40% others) for improved relevance.
+- Version 1: TF-IDF on combined features (description + director + cast + genres).
+- Version 2: Separate matrices for genres and other text.
+- Version 3: Weighted combination (60% genres, 40% others) for improved relevance.
 Example: Recommendations for "Stranger Things" and "Emily in Paris".
 
 ## Insights:
