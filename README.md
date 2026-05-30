@@ -16,12 +16,12 @@ This is my first EDA project, built with Python in a Jupyter Notebook. Feedback 
 ## Requirements
 
 Python 3.x
-Libraries: pandas, numpy, matplotlib, seaborn, wordcloud, scikit-learn (install via pip install -r requirements.txt)
+Libraries: pandas, numpy, matplotlib, seaborn, wordcloud, scikit-learn
 
 ## How to Run
 
 1. Clone the repo: git clone https://github.com/yourusername/netflix-eda-recommendation.git
-2. Install dependencies: pip install -r requirements.txt
+2. Install dependencies
 3. Open the Jupyter Notebook: jupyter notebook Netflix_EDA_and_Recommendation.ipynb
 4. Run all cells to perform EDA and test recommendations.
 
